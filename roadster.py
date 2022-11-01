@@ -105,3 +105,4 @@ if __name__ == "__main__":
     #print(velocity(x,'speed_anna'))
     #help(roadster.load_route)
     plot_1('speed_anna')
+    plot_1a('Consumption as a function of speed')
