@@ -42,6 +42,16 @@ def consumption(v):
     cons = a[0]*v**(-1) + a[1] + a[2]*v**1 + a[3]*v**2
     return cons
 
+def plot_1a(v):
+    # distance_km = load_route(route)
+    # x = np.array(distance_km)
+    # v = velocity(x, route)
+    cons = consumption(v)
+    plt.scatter(v, cons)
+    plt.xlabel('Speed (km/h)')
+    plt.ylabel('Energy consumptio')
+    plt.show()
+
 ### PART 1B ###
 def velocity(x, route):
     # ALREADY IMPLEMENTED!
