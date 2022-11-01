@@ -1,5 +1,8 @@
+import matplotlib
 import numpy as np
 from scipy import interpolate
+import roadster
+import matplotlib.pyplot as plt
 
 def load_route(route):
     """ 
@@ -55,6 +58,16 @@ def velocity(x, route):
     v = interpolate.pchip_interpolate(distance_km, speed_kmph,x)
     return v
 
+def plot_1(route):
+    distance_km, speed_kmph = load_route(route)
+    x=np.array(distance_km)
+    v = velocity(x, route)
+    plt.scatter(x, v)
+    plt.xlabel('Distance Traveled (km)')
+    plt.ylabel('Velocity (km/h)')
+    plt.show()
+    
+
 ### PART 2A ###
 def time_to_destination(x, route, n):
     # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
@@ -74,3 +87,11 @@ def distance(T, route):
 def reach(C, route):
     # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
     raise NotImplementedError('reach not implemented yet!')
+
+
+if __name__ == "__main__":
+    #distance_km, speed_kmph = load_route('speed_anna')
+    #x=np.array(distance_km)
+    #print(velocity(x,'speed_anna'))
+    #help(roadster.load_route)
+    plot_1('speed_anna')
