@@ -62,7 +62,7 @@ def plot_1(route):
     distance_km, speed_kmph = load_route(route)
     x=np.array(distance_km)
     v = velocity(x, route)
-    plt.scatter(x, v)
+    plt.scatter(x, v,linewidths = 0.001)
     plt.xlabel('Distance Traveled (km)')
     plt.ylabel('Velocity (km/h)')
     plt.show()
