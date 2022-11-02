@@ -42,14 +42,15 @@ def consumption(v):
     cons = a[0]*v**(-1) + a[1] + a[2]*v**1 + a[3]*v**2
     return cons
 
-def plot_1a(v):
+def plot_1a():
     # distance_km = load_route(route)
     # x = np.array(distance_km)
     # v = velocity(x, route)
+    v = np.linspace(0,200,800)
     cons = consumption(v)
-    plt.scatter(v, cons)
+    plt.scatter(v, cons, s = 3)
     plt.xlabel('Speed (km/h)')
-    plt.ylabel('Energy consumptio')
+    plt.ylabel('Energy consumption')
     plt.show()
 
 ### PART 1B ###
@@ -68,11 +69,22 @@ def velocity(x, route):
     v = interpolate.pchip_interpolate(distance_km, speed_kmph,x)
     return v
 
-def plot_1(route):
+def plt_wointerpol(route):
+    distance_km, speed_kmph = load_route(route)
+    x=np.array(distance_km)
+    v =np.array(speed_kmph)
+    plt.scatter(x, v, s=1)
+    plt.title("Dot Plot without Interpolation")
+    plt.xlabel('Distance Traveled (km)')
+    plt.ylabel('Recorded Speed(km/h)')
+    plt.show()
+
+def plot_interpol(route):
     distance_km, speed_kmph = load_route(route)
     x=np.array(distance_km)
     v = velocity(x, route)
-    plt.scatter(x, v,linewidths = 0.001)
+    plt.plot(x, v)
+    plt.title("Plot with Interpolation")
     plt.xlabel('Distance Traveled (km)')
     plt.ylabel('Velocity (km/h)')
     plt.show()
@@ -104,5 +116,6 @@ if __name__ == "__main__":
     #x=np.array(distance_km)
     #print(velocity(x,'speed_anna'))
     #help(roadster.load_route)
-    plot_1('speed_anna')
-    plot_1a('Consumption as a function of speed')
+    #plt_wointerpol('speed_anna')
+    #plot_1a('Consumption as a function of speed')
+    plot_1a()
